@@ -38,11 +38,11 @@ jobs:
       run: |
         docker push chatbotllmtest.azurecr.io/chatbottest:1   # Replace <YOUR_ACR_NAME> and <image_name>
 
-    # # Step 6: Deploy to Azure Container App
-    # - name: Deploy to Azure Container App
-    #   uses: azure/azure-container-apps-deploy@v1
-    #   with:
-    #     azure_subscription: ${{ secrets.AZURE_SUBSCRIPTION }}  # GitHub Secret for Azure Subscription ID
-    #     resource_group: <resource_group_name>  # Replace <resource_group_name> with your Azure resource group name
-    #     container_app_name: <container_app_name>  # Replace <container_app_name> with your Azure Container App name
-    #     image_name: <YOUR_ACR_NAME>.azurecr.io/<image_name>:${{ github.sha }}  # Image pushed to ACR
+    # Step 6: Deploy to Azure Container App
+    - name: Deploy to Azure Container App
+      uses: azure/azure-container-apps-deploy@v1
+      with:
+        azure_subscription: fe900839-6d9b-4e8e-9ca9-021babff604a  # GitHub Secret for Azure Subscription ID
+        resource_group: chatbot_test  # Replace <resource_group_name> with your Azure resource group name
+        container_app_name: llm-server-test  # Replace <container_app_name> with your Azure Container App name
+        image_name: chatbotllmtest.azurecr.io/chatbottest:1  # Image pushed to ACR
