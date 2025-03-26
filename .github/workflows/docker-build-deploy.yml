@@ -49,21 +49,4 @@ jobs:
           docker push ${{ secrets.ACR_NAME }}.azurecr.io/chatbottest:${{ env.NEW_TAG }}
           docker push ${{ secrets.ACR_NAME }}.azurecr.io/chatbottest:latest
 
-  # deploy:
-  #   name: Deploy to Azure Container App
-  #   needs: build_and_push
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Log in to Azure
-  #       uses: azure/login@v1
-  #       with:
-  #         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-  #     - name: Deploy to Azure Container App
-  #       run: |
-  #         az containerapp update \
-  #           --name ${{ secrets.AZURE_CONTAINER_APP_NAME }} \
-  #           --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-  #           --image ${{ secrets.ACR_NAME }}.azurecr.io/chatbottest:${{ env.NEW_TAG }} \
-  #           --revision-suffix rev-${{ env.NEW_TAG }}
+ 
